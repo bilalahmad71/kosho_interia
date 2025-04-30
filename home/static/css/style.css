@@ -1,0 +1,701 @@
+
+/* Import Google Fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
+
+
+/* Define Variables */
+:root {
+    /* Using a slightly refined palette inspired by the original */
+    --primary-color: #a77a50; /* A muted, sophisticated brown/gold */
+    --secondary-color: #f8f9fa;
+    --dark-color: #2d2d2d; /* Slightly softer dark */
+    --text-color: #555;
+    --light-text: #f8f9fa;
+    --heading-font: 'Inter', serif;
+    --body-font: 'Inter', sans-serif;
+    --whatsapp-green: #25D366;
+    --navbar-height: 75px; /* Slightly taller navbar */
+}
+
+/* General Body Styling */
+body {
+    font-family: var(--body-font);
+    color: var(--text-color);
+    line-height: 1.7;
+    padding-top: var(--navbar-height);
+    background-color: #ffffff;
+    font-weight: 300; /* Lighter default weight */
+}
+
+h1, h2, h3, h4, h5, h6, .logo-font {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+h2.section-title {
+    font-size: 2.5rem; /* Larger section titles */
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.2rem; /* More spacing between paragraphs */
+}
+
+/* Navbar */
+.navbar {
+    min-height: var(--navbar-height);
+    transition: background-color 0.3s ease;
+}
+
+.navbar-brand.logo-font {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--dark-color) !important; /* Original uses dark text logo */
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: var(--dark-color) !important;
+    margin-left: 20px; /* More space between links */
+    font-weight: 400;
+    text-transform: uppercase; /* Uppercase links */
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+/* Hero Section */
+/* #hero {
+    height: calc(100vh - var(--navbar-height));
+    min-height: 600px;
+    position: relative;
+    background-color: #333; 
+
+
+    background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), url('{% static "images/Enhanced_Home_page_pic2.png" %}') no-repeat center center;
+    background-size: cover;
+} */
+
+.hero-title {
+    font-size: 3.8rem; /* Larger hero title */
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    max-width: 600px; /* Constrain subtitle width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Buttons */
+.btn-custom {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    padding: 14px 40px; /* Larger padding */
+    font-weight: 700; /* Bold button text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-custom:hover {
+    background-color: darken(var(--primary-color), 8%); /* SASS/LESS needed or use hex */
+    background-color: #966a41; /* Manual darker hex */
+    border-color: #966a41;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.btn-custom-outline {
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color); /* Thicker border */
+    padding: 12px 35px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-custom-outline:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* About Section */
+#about img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+#about img:hover {
+     transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+/* Services Section */
+#services .service-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee; /* Subtle border */
+}
+#services .service-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+#services .service-icon i {
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+#services .service-item:hover .service-icon i {
+    transform: scale(1.15);
+}
+
+
+/* projects Section */
+/* =============================== */
+/* Project/Portfolio Card Overlay  */
+/* =============================== */
+
+.projects-card { /* Use .portfolio-card if you kept that class name */
+    position: relative; /* Needed for absolute positioning of overlay */
+    overflow: hidden;   /* Keep this to clip the zoomed image */
+     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Existing transition */
+}
+
+.projects-card img {
+    transition: transform 0.5s ease;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* The Overlay */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 45, 45, 0.75); /* Semi-transparent dark background */
+    color: #fff; /*White text*/
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.4s ease; /* Smooth fade-in transition */
+
+    /* Centering content */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem; /* Add some padding */
+}
+
+/* Show overlay on hover */
+.projects-card:hover .project-overlay {
+    opacity: 1; /* Make it visible */
+}
+
+/* Optional: Keep image zoom effect on hover */
+.projects-card:hover img {
+     transform: scale(1.1);
+}
+
+/* Style the title inside the overlay */
+.project-overlay .project-title {
+    font-family: var(--heading-font); /* Use your heading font */
+    font-weight: 600; /* Make it slightly bolder */
+    color: #fff; /* Ensure title is white */
+     transform: translateY(10px); /* Start slightly lower */
+     transition: transform 0.4s ease 0.1s; /* Add slight delay and slide-up */
+}
+.projects-card:hover .project-overlay .project-title {
+    transform: translateY(0); /* Slide up on hover */
+}
+
+
+/* Style the button/link inside the overlay */
+.project-overlay .project-link {
+    /* btn-light gives light background, dark text. Adjust if needed */
+    /* Example: If you want white text on primary color button */
+    /* background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff; */
+     transform: translateY(10px); /* Start slightly lower */
+     opacity: 0; /* Hide button initially */
+     transition: transform 0.4s ease 0.2s, opacity 0.4s ease 0.2s; /* Delay button appearance */
+}
+
+.projects-card:hover .project-overlay .project-link {
+    transform: translateY(0);
+    opacity: 1; /* Show button on hover */
+}
+
+
+.project-overlay .project-link:hover {
+    /* Define hover style for the overlay button if needed */
+    filter: brightness(1.1); /* Example: slightly brighten btn-light */
+}
+
+/* Contact Form */
+#contact .card {
+    background-color: #ffffff;
+    border-radius: 8px; /* More rounded card */
+}
+.form-title {
+    font-weight: 700;
+    color: var(--dark-color);
+}
+#contact .form-control {
+    border: 1px solid #ddd; /* Lighter border */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 0.9rem 1.1rem;
+    border-radius: 5px;
+}
+#contact .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(167, 122, 80, 0.25); /* Use primary color alpha */
+}
+#contact .form-label {
+    font-weight: 400; /* Regular label weight */
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+    font-size: 0.9rem;
+}
+#contact .form-control::placeholder {
+    color: #aaa;
+}
+#contact .text-danger {
+    font-weight: normal;
+}
+
+
+/* mine */
+.custom-paragraph {
+  font-size: 1.6rem; /* Example: Increase font size slightly (default is usually 1rem) */
+  /* You can also set a specific color here if you don't want the default text color */
+  color: #454545; /* Example: A slightly darker gray than text-muted custom-paragraph */
+  line-height: 1.8; /* Adjust line spacing if needed */
+  margin-bottom: 1.2rem; /* Ensure consistent paragraph spacing */
+}
+.custom-paragraph2 {
+  font-size: 1.3rem; /* Example: Increase font size slightly (default is usually 1rem) */
+  /* You can also set a specific color here if you don't want the default text color */
+  color: #454545; /* Example: A slightly darker gray than text-muted custom-paragraph */
+  line-height: 1.8; /* Adjust line spacing if needed */
+  margin-bottom: 1.2rem; /* Ensure consistent paragraph spacing */
+}
+
+
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+}
+
+/* WhatsApp Floating Icon */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: var(--whatsapp-green);
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 1030;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.12); /* Slightly bigger pop */
+    background-color: #1ebe57;
+    color: #FFF;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+     h2.section-title { font-size: 2.2rem; }
+     .hero-title { font-size: 3rem; }
+     .nav-link { margin-left: 10px; } /* Less space on medium screens */
+     #about .row > div { text-align: center; }
+     #about img { margin-bottom: 2rem; }
+}
+
+@media (max-width: 767px) {
+    :root { --navbar-height: 65px; }
+     body { padding-top: var(--navbar-height); }
+    #hero { height: 80vh; min-height: 450px; }
+    .hero-title { font-size: 2.4rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    h2.section-title { font-size: 1.9rem; }
+    .whatsapp-float { width: 55px; height: 55px; bottom: 25px; right: 25px; font-size: 26px; }
+    #contact .card { padding: 1.8rem !important; }
+    .btn-custom, .btn-custom-outline { padding: 12px 30px; font-size: 0.9rem;}
+    .navbar-nav { margin-top: 10px; } /* Add space when collapsed */
+    .nav-link { margin-left: 0; text-align: center; }
+}
+
+
+
+
+
+
+/* =============================== */
+/* Testimonial Section Styles      */
+/* =============================== */
+
+#testimonials {
+    position: relative; /* Needed for pseudo-elements if used */
+    overflow: hidden; /* Prevent potential overflow issues */
+}
+
+#testimonials .lead {
+    max-width: 700px; /* Constrain subtitle width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.testimonial-item-content {
+    padding-top: 2rem; /* Space above avatar/quote */
+    padding-bottom: 4rem; /* Space below controls */
+    max-width: 800px; /* Max width for text */
+    margin: 0 auto; /* Center content block */
+}
+
+.testimonial-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover; /* Ensure image covers the circle */
+    border: 4px solid #fff; /* White border */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Placeholder for when no avatar image is available */
+.testimonial-avatar-placeholder {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #e9ecef; /* Light gray background */
+    border: 4px solid #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3rem; /* Icon size */
+    color: #adb5bd; /* Icon color */
+}
+
+
+.testimonial-quote {
+    font-size: 1.25rem; /* Slightly larger quote text */
+    line-height: 1.7;
+    color: var(--text-color); /* Use your defined text color */
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.testimonial-quote i { /* Styling for quote icons */
+    vertical-align: middle; /* Align icons better with text */
+    opacity: 0.8;
+}
+.testimonial-quote i.fa-quote-left {
+    margin-right: 0.5rem;
+}
+.testimonial-quote i.fa-quote-right {
+    margin-left: 0.5rem;
+}
+
+.testimonial-author {
+    font-family: var(--heading-font); /* Use heading font for author */
+    font-size: 1.1rem;
+    color: var(--dark-color); /* Use dark color */
+    margin-top: 1.5rem; /* Space above author name */
+}
+
+.testimonial-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Carousel Controls Styling */
+#testimonialCarousel .carousel-control-prev,
+#testimonialCarousel .carousel-control-next {
+    width: 5%; /* Smaller control area */
+}
+
+#testimonialCarousel .carousel-control-prev-icon,
+#testimonialCarousel .carousel-control-next-icon {
+    background-color: rgba(45, 45, 45, 0.5); /* Dark semi-transparent background */
+    background-size: 50%, 50%; /* Make arrow icon smaller */
+    border-radius: 50%; /* Circular background */
+    padding: 1.2rem; /* Increase padding to make circle bigger */
+    filter: invert(80%) sepia(10%) saturate(1000%) hue-rotate(320deg) brightness(90%) contrast(90%); /* Attempt to color close to primary - adjust if needed */
+    /* Alternative: Use primary color directly if background image allows it */
+    /* background-color: var(--primary-color);
+       filter: none; // Reset filter if using solid color background
+       opacity: 0.8; */
+}
+#testimonialCarousel .carousel-control-prev-icon:hover,
+#testimonialCarousel .carousel-control-next-icon:hover {
+    background-color: rgba(45, 45, 45, 0.7);
+     /* Alternative hover */
+    /* background-color: var(--primary-color);
+       opacity: 1; */
+}
+
+
+/* Carousel Indicators Styling */
+#testimonialCarousel .carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc; /* Inactive dot color */
+    border: none;
+    margin: 0 5px; /* Spacing between dots */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#testimonialCarousel .carousel-indicators .active {
+    background-color: var(--primary-color); /* Active dot color */
+    opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .testimonial-item-content {
+        padding-left: 1rem; /* Reduce horizontal padding on small screens */
+        padding-right: 1rem;
+        padding-bottom: 5rem; /* Ensure space for controls */
+    }
+    .testimonial-quote {
+        font-size: 1.1rem; /* Slightly smaller quote on mobile */
+    }
+    .testimonial-avatar, .testimonial-avatar-placeholder {
+        width: 80px;
+        height: 80px;
+    }
+    #testimonialCarousel .carousel-control-prev,
+    #testimonialCarousel .carousel-control-next {
+        width: 10%; /* Wider control area touch targets */
+    }
+    .testimonial-avatar-placeholder {
+        font-size: 2.5rem;
+    }
+}
+
+
+
+/* =============================== */
+/* Professional Footer Styles      */
+/* =============================== */
+
+#professional-footer {
+    /* Dark Background */
+    background-color: #10111d; /* Bootstrap dark color */
+    /* Optional: Add subtle gradient like before if desired */
+    /* background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%); */
+    color: #ced4da; /* Light gray text */
+    font-size: 0.95rem;
+}
+
+.footer-logo {
+    max-height: 55px; /* Control logo height */
+    width: auto;      /* Maintain aspect ratio */
+    filter: brightness(0) invert(1); /* Make PNG logo white */
+    opacity: 0.9; /* Slightly transparent */
+}
+
+.footer-heading {
+    color: #ffffff; /* White headings */
+    font-weight: 600; /* Semi-bold */
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle underline */
+    padding-bottom: 8px;
+    display: inline-block; /* Make border only as wide as text */
+}
+
+.footer-links li {
+    margin-bottom: 10px; /* Space between links */
+}
+
+.footer-links a {
+    color: #f8f9fa; /* White link text */
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color); /* Use site's primary color on hover */
+    padding-left: 5px; /* Indent slightly on hover */
+    text-decoration: none; /* Ensure no underline appears */
+}
+
+.copyright-text {
+    font-size: 0.85rem;
+    color: #adb5bd; /* Dimmer color for copyright */
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 767px) {
+    #professional-footer .row {
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 20px; /* Space between logo and links */
+    }
+}
+
+
+
+/* =============================== */
+/* Services Alternating Layout     */
+/* =============================== */
+
+#services {
+    /* Ensure sufficient padding if bg-light is used */
+    padding-top: 4rem;
+    padding-bottom: 2rem; /* Adjust bottom padding as needed */
+}
+
+.service-row {
+    /* Add extra separation if needed */
+    /* border-bottom: 1px solid #eee; */
+}
+
+.service-image {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.service-row:hover .service-image {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important; /* Enhance shadow on row hover */
+}
+
+.service-title {
+    font-family: var(--heading-font);
+    color: var(--dark-color);
+    font-weight: 700;
+    font-size: 1.8rem; /* Adjust title size */
+}
+
+.service-title .text-primary {
+    color: var(--primary-color) !important; /* Ensure icon uses primary color */
+}
+
+.service-description {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+.service-expertise {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin-top: 1.2rem;
+    /* Italic style added via Bootstrap class fst-italic */
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .service-row {
+        margin-bottom: 3rem; /* Reduce bottom margin on small screens */
+         padding-bottom: 1rem; /* Reduce bottom padding */
+    }
+    .service-row .col-md-6 {
+        text-align: center; /* Center text below image */
+    }
+     .service-image {
+        margin-bottom: 1.5rem; /* Add space below image when stacked */
+    }
+    .service-title {
+        font-size: 1.6rem;
+    }
+    /* Remove specific padding added for larger screens */
+    .service-row .ps-md-5 { padding-left: var(--bs-gutter-x, .75rem) !important; }
+    .service-row .pe-md-5 { padding-right: var(--bs-gutter-x, .75rem) !important; }
+}
+
+
+
+
+
+
+/* =============================== */
+/* Project Detail Page Styles      */
+/* =============================== */
+
+
+
+/* =============================== */
+/* Project Detail Page Styles      */
+/* =============================== */
+
+#project-hero-image .project-main-img {
+    width: 100%;         /* Span full container width */
+    max-height: 80vh;    /* Limit height (e.g., 80% of viewport height). Adjust as needed (70vh, 75vh, 85vh etc.) */
+    height: auto;        /* Allow natural height up to max-height */
+    object-fit: cover;   /* Crucial: Scale image to cover the area, maintain aspect ratio, crop excess */
+    object-position: center; /* Optional: Control cropping focus (e.g., 'top center', 'bottom center') */
+    display: block;      /* Prevents potential small gaps below image */
+}
+
+/* Keep existing styles below if you have them */
+
+#project-details .project-page-title {
+    color: var(--primary-color); /* Example: Use primary color for title */
+    font-size: 2.8rem; /* Example: Slightly larger title */
+    font-weight: 700;
+}
+
+/* ... other project detail styles ... */
+
+@media (max-width: 767px) {
+    #project-hero-image .project-main-img {
+       max-height: 60vh; /* Optional: You might want a slightly smaller max-height on mobile */
+    }
+
+    #project-details .project-page-title {
+        font-size: 2rem; /* Adjust title size for mobile */
+    }
+}
+
+/* ... rest of your CSS ... */
