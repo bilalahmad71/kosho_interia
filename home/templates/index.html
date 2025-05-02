@@ -50,7 +50,10 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
             <!-- Assuming 'KOSHO INTERIA' text logo -->
-            <a class="navbar-brand logo-font" href="#"><img src='{% static "images/Black_logo.png" %}' alt="" style="width: 300px; height: 80px;"></a>
+            <a class="navbar-brand logo-font" href="#">
+                <!-- <img src='{% static "images/Black_logo.png" %}' alt="" style="width: 300px; height: 80px;" > -->
+                <img src='{% static "images/Black_logo.png" %}' alt="" class="navbar-logo-img" >
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -325,7 +328,8 @@
                      <!-- Improved Form Styling -->
                     <div class="card p-4 p-md-5 border-0 shadow-sm">
                          <h3 class="text-center mb-4 form-title">Send Us a Message</h3>
-                        <form action="#" method="POST"> <!-- NEEDS ACTION URL -->
+
+                        <!-- <form  method="POST">  -->
                             <div class="row mb-3">
                                 <div class="col-md-6 mb-3 mb-md-0">
                                     <label for="contactName" class="form-label">Name <span class="text-danger">*</span></label>
@@ -342,14 +346,14 @@
                                     <input type="text" class="form-control form-control-lg" id="contactPhone" placeholder="Your Contact No." required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="contactEmail" class="form-label">Service <span class="text-danger">*</span></label>
+                                    <label for="ContactService" class="form-label">Service <span class="text-danger">*</span></label>
                                     <select name="ContactService" class="form-control" id="ContactService">
                                         <option value="" disabled selected>Choose Service</option>
-                                        <option value="" >Interior Designing</option>
+                                        <option value="Interior Designing">Interior Designing</option>
                                         <option value="Furniture" >Furniture</option>
                                         <option value="Lighting" >Lighting</option>
                                         <option value="Decorating" >Decorating</option>
-                                        <option value="Other" >Other</option>
+                                        <option value="Other">Other</option>
                                         
                                     </select>
                                 </div>
@@ -363,14 +367,96 @@
                                 <textarea class="form-control form-control-lg" id="contactMessage" rows="5" placeholder="Tell us briefly about your project or question..." required></textarea>
                             </div>
                             <div class="text-center">
-                                 <button type="submit" class="btn btn-primary btn-lg btn-custom px-5">Submit</button>
+                                 <button type="button" id="FormSubmitButton" class="btn btn-primary btn-lg btn-custom px-5">Submit</button>
                             </div>
-                        </form>
+                        <!-- </form> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+
+        function popup(icon,message){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: icon,
+                    title: message
+                });
+            };
+        form_submit_button=document.getElementById('FormSubmitButton');
+        form_submit_button.addEventListener('click',(e)=>{
+            let contact_name=document.getElementById('contactName').value;
+            let contact_email=document.getElementById('contactEmail').value;
+            let contact_phone=document.getElementById('contactPhone').value;
+            let contact_service=document.getElementById('ContactService').value;
+            let contact_message=document.getElementById('contactMessage').value;
+
+            if (!contact_name || contact_name.length < 3){
+                popup('error','Please provide your name');
+                return;
+            }
+            if (!contact_email || contact_email.length < 8){
+                popup('error','Please provide valid email');
+                return;
+            }
+            if (!contact_phone || contact_phone.length < 10){
+                popup('error','Please provide valid phone');
+                return;
+            }
+            if (!contact_service || contact_service.length < 3){
+                popup('error','Please provide valid service');
+                return;
+            }
+            if (!contact_message || contact_message.length < 6){
+                popup('error','Please give us a brief about your requirement');
+                return;
+            }
+            data={
+                "contact_name":contact_name,
+                "contact_email":contact_email,
+                "contact_phone":contact_phone,
+                "contact_service":contact_service,
+                "contact_message":contact_message
+
+            }
+            fetch('/submit-lead/', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',  // ✅ CORRECTED header key
+            },
+            body: JSON.stringify(data)  // ✅ body must be a JSON string
+            })
+            .then(response => response.json())
+            .then(json_response => {
+                if (json_response.status==1){
+                    document.getElementById('contactName').value="";
+                    document.getElementById('contactEmail').value="";
+                    document.getElementById('contactPhone').value="";
+                    document.getElementById('ContactService').value="";
+                    document.getElementById('contactMessage').value="";
+                    popup('success',json_response.message);
+                }else{
+                    popup('error',json_response.message)
+                }
+            })
+            .catch(error => {
+                popup('error','Something went wrong')
+            });
+        });
+    </script>
 
 
 

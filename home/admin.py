@@ -30,4 +30,5 @@ class AdminTestimonial(admin.ModelAdmin):
 class AdminLead(admin.ModelAdmin):
     list_display=('id','name','email','phone','service','message')
     search_fields=['id','name','email','phone','service','message']
+    list_filter=['service']
     

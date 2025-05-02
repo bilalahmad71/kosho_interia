@@ -698,4 +698,35 @@ footer {
     }
 }
 
+
+/* =============================== */
+/* Navbar Logo Styling             */
+/* =============================== */
+
+.navbar-logo-img {
+    width: 300px; /* Default width for larger screens */
+    max-width: 100%; /* Ensure it doesn't overflow container if container shrinks */
+    height: auto;   /* Maintain aspect ratio automatically */
+    vertical-align: middle; /* Optional: Better alignment */
+    transition: width 0.3s ease; /* Optional: Smooth transition if size changes */
+}
+
+/* --- Responsive Adjustments for Logo --- */
+
+/* Example: Slightly smaller logo on typical mobile screens (below 768px) */
+/* Adjust breakpoint (767.98px) and width (260px) as needed */
+@media (max-width: 767.98px) {
+    .navbar-logo-img {
+        width: 260px;
+    }
+}
+
+/* Specific rule for VERY small screens (like iPhone SE, etc.) */
+/* Adjust breakpoint (450px) and width (220px) as needed */
+@media (max-width: 450px) {
+    .navbar-logo-img {
+        width: 220px; /* Significantly smaller width */
+    }
+}
+
 /* ... rest of your CSS ... */
