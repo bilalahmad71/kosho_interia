@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path
 from home.views import (
-    home_view,projects_view,handle_lead_submit
+    home_view,projects_view,handle_lead_submit,contact_view,about_view,blogs_view
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -17,6 +17,12 @@ urlpatterns = [
     path('', home_view),
     path('projects/', projects_view),
     path('projects/<project_url>/', projects_view),
+    path('contact/',contact_view),
+    path('about/',about_view),
+    path('blogs/',blogs_view),
+    path('blogs/<blog_url>/',blogs_view),
+
+
     path('submit-lead/', handle_lead_submit),
 
 ]

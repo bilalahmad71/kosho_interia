@@ -13,13 +13,13 @@ class AdminProjectGallery(admin.ModelAdmin):
 
 @admin.register(Blog)
 class AdminBlog(admin.ModelAdmin):
-    list_display=('id','blog_heading','blog_description_1','blog_description_2','primary_image')
-    search_fields=['id','blog_heading','blog_description_1','blog_description_2']
+    list_display=('id','title','sub_title','blog_description_1','blog_description_2','primary_image')
+    search_fields=['id','title','sub_title','blog_description_1','blog_description_2']
  
 
 @admin.register(BlogGallery)
 class AdminBlogGallery(admin.ModelAdmin):
-    search_fields=['blog__blog_heading','blog__blog_description_1','blog__blog_description_2']
+    search_fields=['blog__title','blog__sub_title','blog__blog_description_1','blog__blog_description_2']
 
 
 @admin.register(Testimonial)

@@ -50,7 +50,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
             <!-- Assuming 'KOSHO INTERIA' text logo -->
-            <a class="navbar-brand logo-font" href="#"><img src='{% static "images/Black_logo.png" %}' alt="" style="width: 300px; height: 80px;"></a>
+            <a class="navbar-brand logo-font" href="#"><img src='{% static "images/Black_logo.png" %}' alt="" class="navbar-logo-img"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -60,13 +60,17 @@
                         <a class="nav-link" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about-us">About Us</a>
+                        <a class="nav-link" href="/about">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/services">Services</a>
+                        <a class="nav-link" href="/#services">Services</a>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link active" href="/projects">projects</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blogs">Blogs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
@@ -79,14 +83,14 @@
     <!-- Header/Navbar -->
     
     <!-- Hero Section -->
-    <section id="hero" class="d-flex align-items-center text-center" style="
-    height: calc(100vh - var(--navbar-height));
-    min-height: 600px;
-    position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), 
-    url('{% static "images/Enhanced_Home_page_pic2.png" %}') no-repeat center center;
-    background-size: cover;
-">
+    {% comment %} <section id="hero" class="d-flex align-items-center text-center" style="
+            height: calc(100vh - var(--navbar-height));
+            min-height: 600px;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), 
+            url('{% static "images/Enhanced_Home_page_pic2.png" %}') no-repeat center center;
+            background-size: cover;
+        ">
         <div class="container position-relative">
              <!-- Text from original site -->
              <h1 class="display-3 text-white mb-3 hero-title">Kosho Interia</h1>
@@ -94,7 +98,7 @@
              <a href="#contact" class="btn btn-primary btn-lg btn-custom">Request A Quote</a>
         </div>
         <!-- Background image set in style.css using the live URL -->
-    </section>
+    </section> {% endcomment %}
 
  
 

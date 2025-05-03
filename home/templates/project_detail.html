@@ -49,7 +49,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
             <!-- Assuming 'KOSHO INTERIA' text logo -->
-            <a class="navbar-brand logo-font" href="#"><img src='{% static "images/Black_logo.png" %}' alt="" style="width: 300px; height: 80px;"></a>
+            <a class="navbar-brand logo-font" href="#"><img src='{% static "images/Black_logo.png" %}' alt="" class="navbar-logo-img" ></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -62,10 +62,14 @@
                         <a class="nav-link" href="/about-us">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/services">Services</a>
+                        <a class="nav-link" href="/#services">Services</a>
                     </li>
                      <li class="nav-item">
                         <a class="nav-link" href="/projects">projects</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blogs">Blogs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
@@ -174,6 +178,8 @@
         </div>
     </section>
 
+    
+    {% endif %}
     <!-- Optional: Call to Action Section -->
     <section id="project-contact-cta" class="py-5">
         <div class="container text-center">
@@ -182,7 +188,6 @@
              <a href="/contact" class="btn btn-primary btn-lg btn-custom">Request A Quote</a>
         </div>
     </section>
-    {% endif %}
 
     {% if current_project.project_video %}
     <!-- 4. Project Video Section -->

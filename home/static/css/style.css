@@ -256,6 +256,22 @@ p {
     filter: brightness(1.1); /* Example: slightly brighten btn-light */
 }
 
+
+/* Override for blog cards */
+.blog-card .project-overlay {
+    opacity: 1 !important; /* Always visible */
+}
+
+.blog-card .project-overlay .project-title,
+.blog-card .project-overlay .project-link {
+    transform: translateY(0) !important; /* No slide on hover */
+    opacity: 1 !important; /* Always visible */
+}
+
+.blog-card:hover img {
+    transform: none; /* Optional: Disable zoom on blog card */
+}
+
 /* Contact Form */
 #contact .card {
     background-color: #ffffff;
@@ -685,6 +701,12 @@ footer {
     font-size: 2.8rem; /* Example: Slightly larger title */
     font-weight: 700;
 }
+.project-page-sub-title{
+    color: var(--primary-color); /* Example: Use primary color for title */
+    font-size: 1.8rem; /* Example: Slightly larger title */
+    font-weight: 400;
+}
+
 
 /* ... other project detail styles ... */
 
@@ -695,6 +717,9 @@ footer {
 
     #project-details .project-page-title {
         font-size: 2rem; /* Adjust title size for mobile */
+    }
+    .project-page-sub-title{
+        font-size: 1.2rem; /* Example: Slightly larger title */
     }
 }
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from home.models import Project,ProjectGallery,Testimonial,Lead
+from home.models import Project,ProjectGallery,Testimonial,Lead,Blog,BlogGallery
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
@@ -38,3 +38,23 @@ def handle_lead_submit(request):
             print(e)
             return JsonResponse({"status": 0, 'message': 'Something went wrong'})
     return JsonResponse({"status": 0, "message": "Something went wrong"})
+
+
+
+def contact_view(request):
+    return render(request,'contact.html')
+
+def about_view(request):
+    all_testimonials=Testimonial.objects.all()[:10]
+    return render(request,'about.html',{"all_testimonials":all_testimonials})
+
+def blogs_view(request,blog_url=None):
+    if blog_url:
+        current_blog=Blog.objects.filter(blog_url=blog_url).first()
+        blog_gallery=BlogGallery.objects.filter(blog=current_blog)
+        if not current_blog:
+            return redirect('/blogs')
+        return render(request,'blog_detail.html',{"current_blog":current_blog,'blog_gallery':blog_gallery})
+    all_blogs=Blog.objects.all()
+    return render(request,'blogs.html',{"all_blogs":all_blogs})
+        

@@ -29,16 +29,18 @@ class ProjectGallery(models.Model):
     
 
 class Blog(models.Model):
-    blog_heading=models.CharField(max_length=255,unique=True)
+    title=models.CharField(max_length=255,unique=True)
+    sub_title=models.CharField(max_length=255,null=True,blank=True)
     blog_description_1=models.TextField()
     blog_description_2=models.TextField()
+    blog_description_3=models.TextField(null=True,blank=True)
     primary_image=models.ImageField(upload_to='blog_images/')
     blog_url=models.CharField(max_length=255,null=True,blank=True,editable=False)
     def __str__(self):
-        return str(self.blog_heading)
+        return str(self.title)
     def save(self, *args, **kwargs):
         if not self.blog_url:
-            self.blog_url = slugify(self.blog_heading)
+            self.blog_url = slugify(self.title)
         else:
             self.blog_url = slugify(self.blog_url)
         super().save(*args, **kwargs)
@@ -47,7 +49,7 @@ class BlogGallery(models.Model):
     blog=models.ForeignKey(Blog,on_delete=models.CASCADE)
     image=models.ImageField(upload_to='blog_images/')
     def __str__(self):
-        return str(self.blog.blog_heading) + " image => " + str(self.image.url)
+        return str(self.blog.title) + " image => " + str(self.image.url)
     
 
 class Testimonial(models.Model):
