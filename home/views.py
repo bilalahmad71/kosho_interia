@@ -30,9 +30,12 @@ def handle_lead_submit(request):
             contact_name=data.get('contact_name')
             contact_email=data.get('contact_email')
             contact_phone=data.get('contact_phone')
-            contact_service=data.get('contact_service')
+            project_budget=data.get('project_budget')
+            project_type= data.get('project_type')
             contact_message=data.get('contact_message')
-            Lead.objects.create(name=contact_name,email=contact_email,phone=contact_phone,service=contact_service,message=contact_message)
+            zip_code=data.get('zip_code')
+            city=data.get('city')
+            Lead.objects.create(name=contact_name,email=contact_email,phone=contact_phone,project_budget=project_budget,message=contact_message)
             return JsonResponse({"status": 1, 'message': 'Thank you | we will get back to you soon'})
         except Exception as e:
             print(e)
@@ -62,3 +65,6 @@ def blogs_view(request,blog_url=None):
 
 def custom_page_not_found_view(request, exception):
     return redirect('/')
+
+def privary_policy(request):
+    return render(request,'privacy_policy.html')

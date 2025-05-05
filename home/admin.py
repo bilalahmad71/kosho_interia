@@ -20,6 +20,7 @@ class AdminBlog(admin.ModelAdmin):
 @admin.register(BlogGallery)
 class AdminBlogGallery(admin.ModelAdmin):
     search_fields=['blog__title','blog__sub_title','blog__blog_description_1','blog__blog_description_2']
+    autocomplete_fields=['blog']
 
 
 @admin.register(Testimonial)
@@ -28,7 +29,7 @@ class AdminTestimonial(admin.ModelAdmin):
     
 @admin.register(Lead)
 class AdminLead(admin.ModelAdmin):
-    list_display=('id','name','email','phone','service','message')
-    search_fields=['id','name','email','phone','service','message']
-    list_filter=['service']
+    list_display=('id','name','email','phone','project_budget','project_type','message','zipcode','city')
+    search_fields=['id','name','email','phone','project_budget','project_type','message','zipcode','city']
+    list_filter=['project_budget','project_budget','city']
     

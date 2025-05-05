@@ -1,0 +1,212 @@
+  <!-- Contact Section -->
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center section-title mb-4">Contact Us</h2>
+        <p class="text-center text-muted custom-paragraph mb-5 lead">Get in touch today to discuss your project.</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                 <!-- Improved Form Styling -->
+                <div class="card p-4 p-md-5 border-0 shadow-sm">
+                     <h3 class="text-center mb-4 form-title">Book consultaition</h3>
+
+                    <!-- <form  method="POST">  -->
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="contactName" class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-lg" id="contactName" placeholder="Your Full Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="contactEmail" class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control form-control-lg" id="contactEmail" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="contactPhone" class="form-label">Phone <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-lg" id="contactPhone" placeholder="Your Contact No." required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="projectBudget" class="form-label">Project Budget<span class="text-danger">*</span></label>
+                                <select name="projectBudget" class="form-control" id="projectBudget">
+                            
+                                    <option value="25 to 50 Lacs">25 to 50 Lacs</option>
+                                    <option value="50 Lacs to 1Cr">50 Lacs to 1Cr</option>
+                                    <option value="1Cr to 3Cr">1Cr to 3Cr</option>
+                                    <option value="3Cr to 8Cr">3Cr to 8Cr</option>
+                                    <option value="8Cr Above">8Cr Above</option>
+                                   
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <label for="projectType" class="form-label">Project Type<span class="text-danger">*</span></label>
+                                <select name="projectType" class="form-control" id="projectType">
+                            
+                                    <option value="Luxury Villa">Luxury Villa</option>
+                                    <option value="Penthouse">Penthouse</option>
+                                    <option value="Premium Apartment">Premium Apartment</option>
+                                    <option value="Bungalow">Bungalow</option>
+                                    <option value="Farmhouse">Farmhouse</option>
+                                    <option value="Office Space">Office Space</option>
+                                    <option value="Retail Showroom">Retail Showroom</option>
+                                    <option value="Restaurant / Cafe">Restaurant / Cafe</option>
+                                    <option value="Hotel / Resort">Hotel / Resort</option>
+                                    <option value="Custom Project">Custom Project</option>
+
+                                   
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <label for="zipCode" class="form-label">Zip Code <span class="text-danger"></span></label>
+                                <input type="text" class="form-control form-control-lg" id="zipCode" placeholder="Your Zip Code" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="City" class="form-label">City <span class="text-danger"></span></label>
+                                <input type="text" class="form-control form-control-lg" id="City" placeholder="your city" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="contactMessage" class="form-label">Message <span class="text-danger">*</span></label>
+                            <textarea class="form-control form-control-lg" id="contactMessage" rows="5" placeholder="Tell us briefly about your project or question..." required></textarea>
+                        </div>
+                        <div class="text-center">
+                             <button type="button" id="FormSubmitButton" class="btn btn-primary btn-lg btn-custom px-5">Submit</button>
+                        </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+
+
+
+    const zip_code_input = document.getElementById('zipCode');
+    const city_input = document.getElementById('City');
+    
+    zip_code_input.addEventListener('input', (e) => {
+        const zip_code = e.target.value.trim();
+    
+        if (zip_code.length === 5) {
+            fetch(`https://api.zippopotam.us/us/${zip_code}`)
+                .then(response => response.json())
+                .then((json_response) => {
+                    try {
+                        city_input.value = json_response.places[0]['place name'];
+                    } catch (error) {
+                        console.error("");
+                    }
+                })
+                .catch((error) => console.error(""));
+        }else if (zip_code.length === 6) {
+            fetch(`https://api.postalpincode.in/pincode/${zip_code}`)
+                .then(response => response.json())
+                .then((json_response) => {
+                    try {
+                        if (json_response[0].Status === "Success") {
+                            city_input.value = json_response[0].PostOffice[0].District;
+                        } else {
+                            city_input.value = "";
+                        }
+                    } catch (error) {
+                        console.error("");
+                    }
+                })
+                .catch((error) => console.log(""));
+        }else{
+            city_input.value = "";
+        }
+    });
+    
+
+
+    function popup(icon,message){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: icon,
+                title: message
+            });
+        };
+    form_submit_button=document.getElementById('FormSubmitButton');
+    form_submit_button.addEventListener('click',(e)=>{
+        let contact_name=document.getElementById('contactName').value;
+        let contact_email=document.getElementById('contactEmail').value;
+        let contact_phone=document.getElementById('contactPhone').value;
+        let project_budget=document.getElementById('projectBudget').value;
+        let project_type= document.getElementById('projectType').value;
+        let contact_message=document.getElementById('contactMessage').value;
+        let zip_code=document.getElementById('zipCode').value;
+        let city=document.getElementById('City').value;
+
+
+        if (!contact_name || contact_name.length < 3){
+            popup('error','Please provide your name');
+            return;
+        }
+        if (!contact_email || contact_email.length < 8){
+            popup('error','Please provide valid email');
+            return;
+        }
+        if (!contact_phone || contact_phone.length < 10){
+            popup('error','Please provide valid phone');
+            return;
+        }
+        if (!contact_service || contact_service.length < 3){
+            popup('error','Please provide valid service');
+            return;
+        }
+        if (!contact_message || contact_message.length < 6){
+            popup('error','Please give us a brief about your requirement');
+            return;
+        }
+        data={
+            "contact_name":contact_name,
+            "contact_email":contact_email,
+            "contact_phone":contact_phone,
+            "project_budget":project_budget,
+            "project_type":project_type,
+            "contact_message":contact_message,
+            "zip_code":zip_code,
+            "city":city
+
+        }
+        fetch('/submit-lead/', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',  // ✅ CORRECTED header key
+        },
+        body: JSON.stringify(data)  // ✅ body must be a JSON string
+        })
+        .then(response => response.json())
+        .then(json_response => {
+            if (json_response.status==1){
+                document.getElementById('contactName').value="";
+                document.getElementById('contactEmail').value="";
+                document.getElementById('contactPhone').value="";
+                document.getElementById('ContactService').value="";
+                document.getElementById('contactMessage').value="";
+                popup('success',json_response.message);
+            }else{
+                popup('error',json_response.message)
+            }
+        })
+        .catch(error => {
+            popup('error','Something went wrong')
+        });
+    });
+</script>
