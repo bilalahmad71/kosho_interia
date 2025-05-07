@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.urls import path
 from home.views import (
-    home_view,projects_view,handle_lead_submit,contact_view,about_view,blogs_view,privary_policy
+    home_view,projects_view,handle_lead_submit,contact_view,about_view,blogs_view,privary_policy,luxury_interior
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -21,15 +21,16 @@ urlpatterns = [
     path('about/',about_view),
     path('blogs/',blogs_view),
     path('blogs/<blog_url>/',blogs_view),
+    path('book-consultation/',luxury_interior),
 
 
     path('submit-lead/', handle_lead_submit),
     path('know-us/', about_view),
     path('enquire/', contact_view),
-     path('privacy-policy/',privary_policy)
+    path('privacy-policy/',privary_policy)
 
 ]
-handler404 = 'home.views.custom_page_not_found_view'
+# handler404 = 'home.views.custom_page_not_found_view'
 
 
 if settings.DEBUG:

@@ -61,7 +61,8 @@ def blogs_view(request,blog_url=None):
     all_blogs=Blog.objects.all()
     return render(request,'blogs.html',{"all_blogs":all_blogs})
         
-
+def luxury_interior(request):
+    return render(request,'landing_page.html')
 
 def custom_page_not_found_view(request, exception):
     return redirect('/')
