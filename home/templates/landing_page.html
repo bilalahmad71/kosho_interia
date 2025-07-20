@@ -90,7 +90,7 @@
         }
         .landing-hero-title {font-family: var(--font-primary); font-weight: 400; font-size: 3.5rem; line-height: 1.2; margin-bottom: 0.75rem;}
         .landing-hero-subtitle {font-family: var(--font-secondary); font-weight: 400; font-size: 1.3rem; letter-spacing: 0.5px; margin-bottom: 1.25rem; color: var(--color-text-light);}
-        .landing-hero-text {font-family: var(--font-secondary); font-weight: 300; font-size: 1rem; max-width: 580px; line-height: 1.7; margin-bottom: 2rem; color: #d8d8d8;}
+        .landing-hero-text {font-family: var(--font-secondary); font-weight: 400; font-size: 1.3rem; max-width: 580px; line-height: 1.7; margin-bottom: 2rem; color: #d8d8d8;}
         .landing-cta-button {background-color: var(--color-gold-brown); border-color: var(--color-gold-brown); color: var(--color-text-dark); padding: 12px 35px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; font-size: 0.9rem; font-family: var(--font-secondary);}
         .landing-cta-button:hover { background-color: #b29570; border-color: #b29570; color: var(--color-text-dark); }
 
@@ -161,7 +161,7 @@
 
         .team-member-title {
             font-family: var(--font-secondary); font-size: 0.75rem; /* Smaller designation */
-            color: #b0b0b0;
+            color: #e0dada;
         }
         .landing-team-blurb { 
             position: absolute;
@@ -303,7 +303,7 @@
 }
 
 .team-member-leader2 {
-    bottom: 200px;  /* Reduced from 130px */
+    bottom: 120px;  /* Reduced from 130px */
     left: 100px;    /* Pull inward */
 }
 
@@ -331,11 +331,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavLanding">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
                 </ul>
             </div>
         </div>
@@ -399,23 +399,25 @@
             <div class="row g-0">
                 <!-- Team Members Column -->
                 <div class="col-lg-5 landing-team-col">
-                    <h3 class="landing-team-section-title">MEET OUR LEADERSHIP</h3>
+                    <h3 class="landing-team-section-title">The Visionaries Behind Kosho Interia </h3>
                     <!-- Leader 1 (CEO - Top Right) -->
                     <div class="team-member-card team-member-leader1">
-                        <img src="{% static 'images/bilal.jpg' %}" alt="Bilal" class="team-member-avatar">
+                        <img src="{% static 'images/pramod.jpg' %}" alt="Pramod Yadav" class="team-member-avatar">
                         <div>
-                            <p class="team-member-name mb-0">Bilal</p>
-                            <p class="team-member-title mb-0">CEO</p>
-                            <p class="team-member-bio mb-0">Bilal leads the company with a bold vision and refined taste, ensuring every space is both elegant and functional.</p>
+                            <p class="team-member-name mb-0">Pramod Yadav
+                            </p>
+                            <h4 class="team-member-title mb-2">CEO</h4>
+                            <p class="team-member-bio mb-0">With over 13 years of experience across interior design, strategic operations, and leadership, Pramod is the strategic mind and design soul behind Kosho Interia. A seasoned designer with refined expertise in luxury home styling and space planning.</p>
                         </div>
                     </div>
                     
                     <div class="team-member-card team-member-leader2">
-                        <img src="{% static 'images/bilal.jpg' %}" alt="Bilal" class="team-member-avatar">
+                        <img src="{% static 'images/akansha.jpg' %}" alt="Akansha Gupta" class="team-member-avatar">
                         <div>
-                            <p class="team-member-name mb-0">Bilal</p>
-                            <p class="team-member-title mb-0">Founder & Chief Designer</p>
-                            <p class="team-member-bio mb-0">With a background in luxury interiors, Bilal brings unmatched creativity and precision to every project.</p>
+                            <p class="team-member-name mb-0">Akansha Gupta</p>
+                            <p class="team-member-title mb-2">Co-founder & COO</p>
+                            <p class="team-member-bio mb-0">
+                                With over a decade of experience in high-end interior design, Akansha brings mastery in luxury décor, experiential styling, and seamless execution. She is the operational heartbeat of Kosho Interia—fluent in both artistic vision and real-world precision.</p>
                         </div>
                     </div>
                     
@@ -429,28 +431,30 @@
                     <div id="landing-contact-form" class="form-content-actual">
                         <h3 class="landing-form-title">BOOK FREE CONSULTATION</h3>
                         <p class="landing-form-subtitle">Fill out the form below – we’ll contact you to schedule your consultation</p>
-                        <form action="#" method="POST">
                             <div class="mb-3">
-                                <input type="text" class="form-control landing-form-control" name="name" placeholder="Name" required>
+                                <input type="text" class="form-control landing-form-control" name="name" placeholder="Name" id="form_name" required>
                             </div>
                             <div class="mb-3">
-                                <input type="tel" class="form-control landing-form-control" name="phone" placeholder="Phone" required>
+                                <input type="email" class="form-control landing-form-control" name="email" placeholder="email" id="form_email" required>
                             </div>
                             <div class="mb-3">
-                                <select class="form-select landing-form-control" name="budget_range" required>
+                                <input type="tel" class="form-control landing-form-control" name="phone" placeholder="Phone" id="form_phone" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select landing-form-control" name="budget_range" id="form_budget" required>
                                     <option value="" selected disabled>Budget range</option>
+                                    <option value="1cr-2cr">₹50 Lac - ₹1 Cr</option>
                                     <option value="1cr-2cr">₹1 Cr - ₹2 Cr</option>
                                     <option value="2cr-5cr">₹2 Cr - ₹5 Cr</option>
                                     <option value="5cr+">₹5 Cr+</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control landing-form-control" name="city" placeholder="City" required>
+                                <input type="text" class="form-control landing-form-control" name="city" placeholder="City" id="form_city" required>
                             </div>
                             <div class="d-grid mt-4">
-                                <button type="submit" class="btn landing-form-submit-button">TALK TO A DESIGNER NOW</button>
+                                <button type="button" class="btn landing-form-submit-button" id="ConsultationSubmitButton">TALK TO A DESIGNER NOW</button>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -469,7 +473,7 @@
     <!-- Footer Placeholder -->
     <footer class="footer-placeholder text-center">
         <div class="container">
-            <p class="mb-0">© 2024 Kosho Interia. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+            <p class="mb-0">© 2025 Kosho Interia. All Rights Reserved. | <a href="/privacy-policy">Privacy Policy</a></p>
         </div>
     </footer>
 
@@ -490,5 +494,94 @@
             });
         });
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+
+
+
+    
+
+
+    function popup(icon,message){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: icon,
+                title: message
+            });
+        };
+        ConsultationSubmitButton=document.getElementById('ConsultationSubmitButton');
+        ConsultationSubmitButton.addEventListener('click',(e)=>{
+        let form_name=document.getElementById('form_name').value;
+        let form_email=document.getElementById('form_email').value;
+        let form_phone=document.getElementById('form_phone').value;
+        let form_budget=document.getElementById('form_budget').value;
+        let form_city=document.getElementById('form_city').value;
+        if (!form_name || form_name.length < 3){
+            popup('error','Please provide your name');
+            return;
+        }
+        if (!form_email || form_email.length < 8){
+            popup('error','Please provide your email');
+            return;
+        }
+        if (!form_phone || form_phone.length < 8){
+            popup('error','Please provide your phone no');
+            return;
+        }
+        if (!form_budget ){
+            popup('error','Please choose your budget');
+            return;
+        }
+        if (!form_city || form_city.length < 3){
+            popup('error','Please provide your city');
+            return;
+        }
+
+       
+        data={
+            "form_name":form_name,
+            "form_email":form_email,
+            "form_phone":form_phone,
+            "form_budget":form_budget,
+            "form_city":form_city
+
+        }
+        fetch('/submit-consultation/', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',  // ✅ CORRECTED header key
+        },
+        body: JSON.stringify(data)  // ✅ body must be a JSON string
+        })
+        .then(response => response.json())
+        .then(json_response => {
+            if (json_response.status==1){
+                document.getElementById('form_name').value="";
+                document.getElementById('form_email').value="";
+                document.getElementById('form_phone').value="";
+                document.getElementById('form_budget').value="";
+                document.getElementById('form_city').value="";
+                popup('success',json_response.message);
+            }else{
+                popup('error',json_response.message)
+            }
+        })
+        .catch(error => {
+            popup('error','Something went wrong')
+        });
+    });
+</script>
 </body>
 </html>

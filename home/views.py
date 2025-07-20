@@ -35,10 +35,27 @@ def handle_lead_submit(request):
             contact_message=data.get('contact_message')
             zip_code=data.get('zip_code')
             city=data.get('city')
-            Lead.objects.create(name=contact_name,email=contact_email,phone=contact_phone,project_budget=project_budget,message=contact_message)
+            Lead.objects.create(name=contact_name,email=contact_email,phone=contact_phone,project_type=project_type,project_budget=project_budget,message=contact_message,zipcode=zip_code,city=city)
             return JsonResponse({"status": 1, 'message': 'Thank you | we will get back to you soon'})
         except Exception as e:
-            print(e)
+            # print(e)
+            return JsonResponse({"status": 0, 'message': 'Something went wrong'})
+    return JsonResponse({"status": 0, "message": "Something went wrong"})
+
+@csrf_exempt
+def book_consultation(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body.decode('utf-8'))  
+            contact_name=data.get('form_name')
+            contact_email=data.get('form_email')
+            contact_phone=data.get('form_phone')
+            project_budget=data.get('form_budget')
+            city=data.get('form_city')
+            Lead.objects.create(name=contact_name,email=contact_email,phone=contact_phone,project_budget=project_budget,city=city)
+            return JsonResponse({"status": 1, 'message': 'Thank you | we will get back to you soon'})
+        except Exception as e:
+            # print(e)
             return JsonResponse({"status": 0, 'message': 'Something went wrong'})
     return JsonResponse({"status": 0, "message": "Something went wrong"})
 
